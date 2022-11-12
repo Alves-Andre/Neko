@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+nav {
+    height: 80px;
+    width: 100%;
+    border-bottom: 2px solid black;
+    background-color:black;
+    color: white;
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.logo {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 5%;
+}
+#logo {
+    width: 80px;
+    height: 80px;
+}
+.perfil img {
+    filter: invert(1);
+}
+.pesquisa {
+    width: 500px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.inp_pesquisa {
+    width: 500px;
+    height: 45px;
+    top: 50%;
+    border-radius: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+    padding-left: 15px;
+}
+#nome_logo {
+    margin-left: 100px;
+    margin-top: -80px;
+    font-size: bold;
+    font-size: 30px;
+}
+#bt {
+    margin: 0;
+    padding: 0;
+    background-image: url("/assets/icon-search.png");
+    width: 40px;
+    height: 40px;
+    margin-top: 19px;
+    background-color: black;
+    z-index: 5;
+    margin-left: -55px;
+    border: none;
+    opacity: 0;
+}
+.animacao {
+    animation: remidir linear 0.2s;
+}
+#lupa {
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    margin-left: -43px;
+    margin-top: 23px;
+}
+/*Menu direito*/
+
+.opcoes {
+    position: absolute;
+    right: 2%;
+    border: 2.5px solid white;
+    border-radius: 40px;
+    width: 110px;
+    height: 40px;
+    top: 10px;
+    display: flex;
+    margin-top: 5px;
+    justify-content: center;
+}
+.menus {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+.opcoes div img:hover {
+    cursor:pointer;
+}
+
+/*Over vil*/
+.overvil {
+    width: 150px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    right: 1%;
+    top: 90px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.overvil div {
+    width: 140px;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 18px;
+    padding-top: 2px;
+}
+.overvil div:nth-child(3) {
+    border-top: 1px solid black;
+}
+.overvil:hover {
+    cursor: pointer;
+}
+.overvil div:hover {
+    background-color: rgb(148, 148, 148);
+}
+
+
+#formulario {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 400px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+}
+.campos{
+    width: 300px;
+    height: 45px;
+    border-radius: 15px;
+    padding-left: 20px;
+    font-size: 20px;
+    margin-bottom: 40px;
+    border: 2px solid black;
+}
+
+#formulario label{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: -250px;
+    width: 55px;
+    border-bottom: 3px solid black;
+    border-radius: 2px;
+}
+
+#bt-log {
+    font-size: 20px;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+}
+#bt-log:hover {
+    background-color: white;
+    color: black;
+}
+.resultado {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}

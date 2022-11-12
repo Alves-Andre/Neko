@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html{
+    min-width: 700px;
+    min-height: 300px;
+}
+nav {
+    height: 80px;
+    width: 100%;
+    border-bottom: 2px solid black;
+    background-color:black;
+    display: flex;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.logo {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 5%;
+}
+#logo {
+    width: 80px;
+    height: 80px;
+}
+.pesquisa {
+    width: 500px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+.perfil img {
+    filter: invert(1);
+}
+.inp_pesquisa {
+    width: 500px;
+    height: 45px;
+    top: 50%;
+    border-radius: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+    padding-left: 15px;
+}
+#nome_logo {
+    margin-left: 100px;
+    margin-top: -80px;
+    font-size: bold;
+    font-size: 30px;
+}
+#bt {
+    margin: 0;
+    padding: 0;
+    background-image: url("/assets/icon-search.png");
+    width: 40px;
+    height: 40px;
+    margin-top: 19px;
+    background-color: black;
+    z-index: 5;
+    margin-left: -55px;
+    border: none;
+    opacity: 0;
+}
+.animacao {
+    animation: remidir linear 0.2s;
+}
+#lupa {
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    margin-left: -43px;
+    margin-top: 23px;
+}
+/*Menu direito*/
+
+.opcoes {
+    position: absolute;
+    right: 2%;
+    border: 2.5px solid white;
+    border-radius: 40px;
+    width: 60px;
+    height: 40px;
+    top: 10px;
+    display: flex;
+    margin-top: 5px;
+    justify-content: space-around;
+}
+.menus {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+.opcoes div img:hover {
+    cursor:pointer;
+}
+
+/*Over vil*/
+.overvil {
+    width: 150px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    right: 1%;
+    top: 90px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.overvil div {
+    width: 140px;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 18px;
+    padding-top: 2px;
+}
+.overvil div:nth-child(3) {
+    border-top: 1px solid black;
+}
+.overvil:hover {
+    cursor: pointer;
+}
+.overvil div:hover {
+    background-color: rgb(148, 148, 148);
+}
+
+/* Bt Sair*/
+#bt-sair {
+    background: rgba(255, 0, 0, 0);
+    border: none;
+}
+#bt-sair:hover {
+    cursor: pointer;
+}
+
+/*Salve */
+.salve {
+    display: inherit;
+    margin-left: 70%;
+    margin-top: 25px;
+}
+.salve span {
+    font-size: 25px;
+    color: white;
+}
+
+
+
+/*Categorias*/
+
+.categoria {
+    display: flex;
+    justify-content: center;
+}
+.categorias {
+    border: 3px solid black;
+    padding: 5px 10px 5px 10px;
+    border-radius: 20px;
+    margin-right: 30px;
+    font-size: 20px;
+    font-size: bold;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.categorias:hover {
+    background-color: black;
+    color: white;
+}
+
+
+/*listagem de estabelecimentos*/
+.listagem {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    margin-left: 7.5%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.estabelecimentos2 {
+    margin: 20px 20px;
+    width: 400px;
+    height: 140px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.333);
+    border-radius: 0px 0px 10px 0px;
+    display: flex;
+}
+.estabelecimentos2 img {
+    width: 110px;
+    height: 110px;
+    border-radius: 90px;
+    margin-top:3px;
+}
+.estabelecimentos p:nth-child(1) { /* Titulo */
+    font-size: 24px;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-weight: bold
+}
+.estabelecimentos p:nth-child(2){    /* Endereco */
+    font-size: 18px;
+    margin-left: 15px;
+    width: 220px;
+    height: 70px;
+}
+.estabelecimentos p:nth-child(3){   /*Categoria */
+    margin-top: -25px;
+    font-size: 17px;
+    margin-left: 15px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding-left: 20px;
+}
+.estabelecimentos div:nth-child(4){  /* Ponto */
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    margin-left: 115px;
+    margin-top: -17px;
+    
+}
+.estabelecimentos p:nth-child(5){      /* Distancia */
+    font-size: 17px;
+    margin-left: 133px;
+    margin-top: -14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes remidir {
+    0% {
+        width: 30px;
+        height: 30px;
+    }
+    50% {
+        width: 25px;
+        height: 25px;
+    }
+    100% {
+        width: 30px;
+        height: 30px;
+    }
+}
