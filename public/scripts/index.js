@@ -1,63 +1,13 @@
-var bt = document.querySelector("#bt");
-var perfil = document.getElementsByClassName('menus')[1]
-var menu = document.getElementsByClassName('menus')[0];
-var overvil = document.getElementsByClassName('overvil')[0]
-var overvil2 = document.getElementsByClassName('overvil2')[0]
+let categorias = document.getElementsByClassName('categorias');
+// for (let i in categorias){
+//     categorias[i].style.color = 'black';
+//     categorias[i].style.background = 'white';
+// }
+let url_atual = window.location.href;
+url_atual = url_atual.split('/')
 
-bt.addEventListener('click', function () {
-    var lupa = document.querySelector("#lupa");
-    lupa.classList.add('animacao');
-    setTimeout(function(){
-        lupa.classList.remove('animacao');
-    },200)
-    
-})
-
-perfil.addEventListener('click', function (){
-    if (overvil.style.display == 'flex') {
-        overvil.style.display = 'none';
-    }else {
-        overvil2.style.display = 'none';
-        overvil.style.display = 'flex';
-    }
-});
-menu.addEventListener('click', function (){
-    if (overvil2.style.display == 'flex'){
-        overvil2.style.display = 'none';
-    }else {
-        overvil.style.display = 'none';
-        overvil2.style.display = 'flex';
-    }
-})
-
-var bt = document.querySelector("#bt");
-    var perfil = document.getElementsByClassName('menus')[1]
-    var menu = document.getElementsByClassName('menus')[0];
-    var overvil = document.getElementsByClassName('overvil')[0]
-    var overvil2 = document.getElementsByClassName('overvil2')[0]
-
-    bt.addEventListener('click', function () {
-        var lupa = document.querySelector("#lupa");
-        lupa.classList.add('animacao');
-        setTimeout(function(){
-            lupa.classList.remove('animacao');
-        },200)
-        
-    })
-
-    perfil.addEventListener('click', function (){
-        if (overvil.style.display == 'flex') {
-            overvil.style.display = 'none';
-        }else {
-            overvil2.style.display = 'none';
-            overvil.style.display = 'flex';
-        }
-    });
-    menu.addEventListener('click', function (){
-        if (overvil2.style.display == 'flex'){
-            overvil2.style.display = 'none';
-        }else {
-            overvil.style.display = 'none';
-            overvil2.style.display = 'flex';
-        }
-    })
+let identificador = Number (url_atual[(url_atual.length -1)])
+//console.log(categorias[identificador-1])
+categorias[identificador-1].style.color = 'white';
+categorias[identificador-1].style.background = 'black';
+console.log(categorias[identificador-1].style.background)

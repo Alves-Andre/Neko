@@ -16,11 +16,10 @@ async function logar (email,senha) {
         var resposta = resultado.rows
         //console.log(resposta)
         cont = resultado.rowCount
-        //console.log(resposta[0][2])
         for (let i = 0; i<cont; i++){
             if (email == resposta[i][2]){
                 if (senha == resposta[i][3]){
-                    //console.log('Logado com sucesso! Bem vindo '+resposta[i][1])
+                    console.log('Logado com sucesso! Bem vindo '+resposta[i][1])
                     const devolve = await cliente.query({rowMode: 'array', text: "SELECT * FROM clientes where id = "+resposta[i][0]})
                     return devolve.rows
                 }else {
@@ -35,10 +34,7 @@ async function logar (email,senha) {
     }
     finally{
         await cliente.end()
-        //console.log("Cliente desconectado.")
+        console.log("Cliente desconectado.")
     }
 }
 module.exports = logar
-// logar('a@gmail.com','1231232123').then((req,res) => {
-//     console.log(req)
-// })

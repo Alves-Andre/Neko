@@ -9,13 +9,19 @@ var log = require('./Scripts/logar')
 const verificar = require('./Scripts/verificar')
 const cadastrar = require('./Scripts/cadastrar');
 const { type } = require("os");
+const getEstabelecimentos = require('./Scripts/getEsta.js')
+const filtroCad = require('./Scripts/fitro.js');
+const { get } = require("jquery");
+const pesquisaEstabelecimentos = require("./Scripts/pesquisa.js")
 
 app.use(session({secret: 'senha123'}))
 app.use(bodyParser.urlencoded({extended:true}))
 
-// Especificar local do CSS e das Imagens
+// Especificar local do CSS e da Imagem
 app.use(express.static(__dirname+"/public"));
 
+
+//teste login e senha
 
 //config    '
     //Template Engine
@@ -26,35 +32,38 @@ app.use(express.static(__dirname+"/public"));
 
 
 
-app.get('/index', (req, res) => {
+app.get('/index', async (req, res) => {
     if (!req.session.login){
         res.redirect('/')
     }else {
-        var nome = new String(resposta[0][1])
-        res.render('logado', {nome: nome})
+        nome = new String(resposta[0][1])
+        var estabelecimentos = await getEstabelecimentos();
+        res.render('logado', {estabelecimento: estabelecimentos, nome: nome})
+    }
+
+})
+app.post('/index', async (req, res) => {
+    if (req.body.search==undefined){
+        req.session.login = null
+        res.redirect('/')
+    }else {
+        var estabelecimentos = await pesquisaEstabelecimentos(req.body.search);
+        var nome = req.session.login
+        res.render('index', {estabelecimento: estabelecimentos, nome: nome})
     }
     
-})
-app.post('/index', (req, res) => {
-    req.session.login = null
-    res.redirect('/')
 })
 
 app.get('/login', (req,res)=> {
     if (req.session.login){
         res.redirect('index')
-        //res.render('logado', {nome: nome})
-        //res.send("Usuario: "+resposta[1])
-
     }else{
         res.render('login')
     }
 })
 app.post('/login',async (req,res)=> {
     resposta = await log(req.body.login,req.body.password)
-    //console.log(resposta)
     if (typeof resposta != 'string'){
-        console.log('Logado com sucesso! Bem vindo '+resposta[0][1])
         req.session.login = resposta[0][1]
         res.redirect('login')
     }else{
@@ -63,47 +72,68 @@ app.post('/login',async (req,res)=> {
 })
 
 
+
 app.get('/cadastro', (req,res) => {
     res.render('cadastro')
 })
 
 app.post('/cadastro', async (req, res) => {
-    var result = await verificar(req.body.tell, req.body.password, req.body.cpassword);
-    //console.log('Resultado do resut : '+result)
+    result = verificar(req.body.tell, req.body.password, req.body.cpassword)
     if (result!=true){
         res.render('cadastro', {mensagem: result})
     }else{
-        var responta = await cadastrar(req.body.nome,req.body.tell, req.body.login, req.body.password);
-        if (responta==true) {
-            res.render('cadastro', {mensagem: "Cadastro realizado com sucesso!"})
+        var result = await cadastrar(req.body.nome,req.body.tell, req.body.login, req.body.password);
+        if (result==true) {
+            res.render('cadastro', {resultado: "Cadastro realizado com sucesso!"})
         }
     }
-})
+});
 
 
 
+app.get("/filtragem/:id", async function(req,res){
+    var f = Number(req.params.id)
+    var estabelecimentos = await filtroCad(f);
+    res.render('index', {estabelecimento: estabelecimentos})
+});
 
+app.get("/index/filtragem/:id", async function(req,res){
+    var f = Number(req.params.id)
+    var estabelecimentos = await filtroCad(f);
+    var nome = req.session.login
+    res.render('logado', {estabelecimento: estabelecimentos, nome: nome})
+});
 
-
-
-
-
-
-
-
-
-
-app.get("/", function(req,res){
+app.get("/", async function(req,res){
     if (req.session.login){
         res.redirect('/index')
-    }else {
-        res.render('index')
+    }else{
+        var estabelecimentos = await getEstabelecimentos()
+        res.render('index', {estabelecimento: estabelecimentos})
     }
     
 });
 
-app.use(function (req, res, next) {
-    res.status(404).send("Sinto muito, essa página está indisponível ou não existe!")
+app.post("/", async function(req,res) {
+    var estabelecimentos = await pesquisaEstabelecimentos(req.body.search);
+    res.render('index', {estabelecimento: estabelecimentos})
+})
+
+app.post("/filtragem/:id", async function(req,res) {
+    var estabelecimentos = await pesquisaEstabelecimentos(req.body.search);
+    res.render('index', {estabelecimento: estabelecimentos})
+})
+
+app.post("/index/filtragem/:id", async function(req,res) {
+    if (req.body.search==undefined){
+        req.session.login = null
+        res.redirect('/')
+    }
+    else{
+        var estabelecimentos = await pesquisaEstabelecimentos(req.body.search);
+        var nome = req.session.login
+        res.render('logado', {estabelecimento: estabelecimentos, nome: nome})
+    }
 })
 
 app.listen(port, function (){

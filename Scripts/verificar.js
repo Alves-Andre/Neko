@@ -22,39 +22,26 @@ function vtelefone(telefone) {
 function vsenha(senha1, senha2) {
     if (senha1!=senha2){
         return "Senhas não conferem"
-    }else if (senha1.length<8){
-        return "A senha tem que ter pelo menos 8 caracteres"
+    }else if (senha1.length<6){
+        return "A senha tem que ter pelo menos 6 caracteres"
     }else {
         return true
     }
 }
 
-async function verificar(telefone, senha1, senha2){
+function verificar(telefone, senha1, senha2){
     res1 = vtelefone(telefone)
     res2 = vsenha(senha1,senha2)
-    const Client = require('pg').Client;
-    const cliente = new Client({
-        user: "postgres",
-        password: "#",
-        host: "127.0.0.1",
-        port: 5432,
-        database: "Neko"})
 
     if (res1!=true){
         return "telefone inválido"
     }else if (res2!=true){
         return res2
-    }
-    else {
-        await cliente.connect()
-        const sql =  "SELECT telefone FROM clientes where telefone='"+telefone+"'"
-        const resultado = (await cliente.query({rowMode: 'array', text: sql})).rows
-        if (resultado.length>0){
-            return "Telefone existente na base de dados"
-        }else {
-            return true
-        }
-
+    }else {
+        return true
     }
 }
 module.exports = verificar
+
+// var res = verificar('123123123','12312','12312')
+// console.log(res)

@@ -10,9 +10,8 @@ nav {
     height: 80px;
     width: 100%;
     border-bottom: 2px solid black;
-    background-color: black;
+    background-color:bisque;
     display: flex;
-    color: white;
 }
 a {
     text-decoration: none;
@@ -36,9 +35,7 @@ a {
     transform: translateX(-50%);
     display: flex;
 }
-.perfil img {
-    filter: invert(1);
-}
+
 .inp_pesquisa {
     width: 500px;
     height: 45px;
@@ -57,7 +54,7 @@ a {
 #bt {
     margin: 0;
     padding: 0;
-    background-image: url("/assets/icon-search.png");
+    background: url("/assets/icon-search.png");
     width: 40px;
     height: 40px;
     margin-top: 19px;
@@ -82,7 +79,7 @@ a {
 .opcoes {
     position: absolute;
     right: 2%;
-    border: 2.5px solid white;
+    border: 2.5px solid black;
     border-radius: 40px;
     width: 60px;
     height: 40px;
@@ -176,8 +173,7 @@ a {
     margin-bottom: 50px;
 }
 .categorias:hover {
-    background-color: black;
-    color: white;
+    cursor: pointer;
 }
 
 
@@ -219,7 +215,8 @@ a {
 .estabelecimentos p:nth-child(3){   /*Categoria */
     margin-top: -25px;
     font-size: 17px;
-    margin-left: 15px;
+    margin-left: 50%;
+    transform: translateX(-50%);
     color: black;
     border: 1px solid black;
     border-radius: 15px;

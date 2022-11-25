@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="/styles/index.css">
     <title>Neko Booking</title>
 </head>
 <body>
-    <nav>
+    <nav><a href="/">
         <div class="logo">
-            <img src="images/logo.png" alt="Logo Neko" id="logo">
+            <img src="/images/logo.png" alt="Logo Neko" id="logo">
             <h2 id="nome_logo">Neko Booking</h2>
-        </div>
-        <div class="pesquisa">
-            <input type="text" name="search" class="inp_pesquisa">
-            <input type="button" value="" id="bt"> 
-            <img src="images/icon-search.png" alt="Icon Lupa" id="lupa">
-        </div>
+        </div> </a>
+        <form action="#" method="post">
+        
+            <div class="pesquisa">
+                <input type="text" name="search" class="inp_pesquisa">
+                <input type="submit" value="" id="bt"> 
+                <img src="/images/icon-search.png" alt="Icon Lupa" id="lupa">
+            </div>
 
+        </form>
         <div class="opcoes">
             <div class="perfil">
-                <img class="menus" src="images/profile.png" alt="icon_perfil">
+                <img class="menus" src="/images/profile.png" alt="icon_perfil">
             </div>
         </div>
 
@@ -29,121 +32,38 @@
         <div class="overvil">
             <a href="/login"><div class="op">Entrar</div></a>
             <a href="/cadastro"><div class="op">Cadastrar-se</div></a>
-            <a href="/help"><div class="op">Ajuda</div></a>
+            <a href="/sobre"><div class="op">Ajuda</div></a>
         </div>
 
     </nav>
 
     <div class="categoria">
-        <div class="categorias">Barbearias</div>
-        <div class="categorias">Manicure e Pedicure</div>
-        <div class="categorias">Estética</div>
-        <div class="categorias">Cílios e Sobrancelhas</div>
+        <a href="/filtragem/1"><div class="categorias">Barbearias</div> </a>
+        <a href="/filtragem/2"><div class="categorias">Manicure e Pedicure</div> </a>
+        <a href="/filtragem/3"><div class="categorias">Estética</div> </a>
+        <a href="/filtragem/4"><div class="categorias">Cílios e Sobrancelhas</div> </a>
     </div>
-    
+
     <div class="listagem">
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
+        {{#if estabelecimento}}
+        {{#each estabelecimento}}
+            <div class="estabelecimentos2">
+                <img src="/images/logos_estabelecimentos/{{this.logo}}" alt="Logo estabelecimento">
+                <div class="estabelecimentos">
+                    <p class="titu">{{this.nome_barbearia}}</p>
+                    <p class="">{{this.endereco.rua}}, {{this.endereco.complemento}}, N° {{this.endereco.numero}}. {{this.endereco.bairro}}</p>
+                    <p>{{this.categoria}}</p>
 
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
+                </div>
             </div>
-        </div>
-
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
-        
-
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
-        
-
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
-        
-
-        <div class="estabelecimentos2">
-            <img src="images/barbearia.jpeg" alt="Logo estabelecimento">
-            <div class="estabelecimentos">
-                <p class="titu">Titulo</p>
-                <p class="">Rua rn 6 QI 16B LT 17, Lago Sul CEP 77.062-138</p>
-                <p>Categoria</p>
-                <div class="ponto"></div>
-                <p>Distancia</p>
-            </div>
-        </div>
-        
-        
+        {{/each}}
+        {{/if}}
     </div>
-</body>
-<script src="scripts/config.js"> </script>
 
+    
+</body>
+<script src="/scripts/config.js"> </script>
+<script src="/scripts/index.js"></script>
+<script>
+</script>
 </html>
